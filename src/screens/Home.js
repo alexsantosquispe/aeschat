@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react'
 import { View, StatusBar, Text, TouchableOpacity } from 'react-native'
 import firestore from '@react-native-firebase/firestore'
 import Icon from 'react-native-vector-icons/Feather'
@@ -8,19 +8,21 @@ import { THREADS } from '../constants'
 import { Colors, GlobalStyles } from '../styles'
 
 const Home = ({ navigation }) => {
-  // navigation.setOptions({
-  //   headerRight: () => (
-  //     <TouchableOpacity
-  //       style={{ paddingVertical: 4, paddingHorizontal: 16 }}
-  //       onPress={signOut}>
-  //       <Icon name="log-out" size={24} color={Colors.primaryColor} />
-  //     </TouchableOpacity>
-  //   )
-  // })
-
   const { logout } = useContext(AuthContext)
   const [threads, setThreads] = useState([])
   const [loading, setLoading] = useState(true)
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          style={{ paddingVertical: 4, paddingHorizontal: 16 }}
+          onPress={signOut}>
+          <Icon name="log-out" size={24} color={Colors.primaryColor} />
+        </TouchableOpacity>
+      )
+    })
+  }, [navigation])
 
   useEffect(() => {
     const unsubscribe = firestore()
