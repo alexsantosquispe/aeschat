@@ -144,22 +144,24 @@ const Room = ({ route }) => {
   )
 
   return (
-    <GiftedChat
-      user={{ _id: currentUser.uid }}
-      messages={messages}
-      onSend={handleSend}
-      textInputProps={{ selectionColor: Colors.primaryColor }}
-      placeholder={'Type your message here...'}
-      renderBubble={renderBubble}
-      renderSend={renderSend}
-      scrollToBottomComponent={scrollToBottomComponent}
-      renderLoading={renderLoading}
-      renderChatEmpty={renderEmptyChat}
-      renderSystemMessage={renderSystemMessage}
-      showUserAvatar
-      alwaysShowSend
-      scrollToBottom
-    />
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      <GiftedChat
+        user={{ _id: currentUser.uid }}
+        messages={messages}
+        onSend={handleSend}
+        textInputProps={{ selectionColor: Colors.primaryColor }}
+        placeholder={'Type your message here...'}
+        renderBubble={renderBubble}
+        renderSend={renderSend}
+        scrollToBottomComponent={scrollToBottomComponent}
+        renderLoading={renderLoading}
+        renderChatEmpty={renderEmptyChat}
+        renderSystemMessage={renderSystemMessage}
+        showUserAvatar
+        alwaysShowSend
+        scrollToBottom
+      />
+    </View>
   )
 }
 
